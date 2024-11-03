@@ -13,6 +13,7 @@ public class TestController {
 
     @GetMapping("/health")
     public ResponseEntity<String> healthCheck() {
+        log.info("test");
         return ResponseEntity.ok("OK");
     }
 }

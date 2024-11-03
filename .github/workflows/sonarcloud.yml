@@ -29,10 +29,10 @@
 name: SonarCloud analysis
 
 on:
-  push:
-    branches: ["main_LMS", "develop"]
-  pull_request:
-    branches: ["main_LMS", "develop"]
+  workflow_run:
+    workflows: ["Java CI with Gradle"]
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:

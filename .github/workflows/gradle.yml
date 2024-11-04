@@ -107,7 +107,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-    
+        
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
@@ -134,9 +134,8 @@ jobs:
           # When you need the analysis to take place in a directory other than the one from which it was launched, default is .
           projectBaseDir: ./backend
 
-
   deploy:
-    name: Deploy
+    name: ecs-deploy
     runs-on: ubuntu-latest
     environment: production
     needs: [sonarcloud-analysis]
@@ -165,7 +164,7 @@ jobs:
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./backend
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./.aws
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 

@@ -112,6 +112,8 @@ jobs:
         with:
           java-version: 17
           distribution: "temurin" # Alternative distribution options are available
+      - name: chmod gradlew
+        run: chmod +x ./backend/gradlew
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
         with:

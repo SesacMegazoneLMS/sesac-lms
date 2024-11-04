@@ -77,6 +77,13 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonar --info
         working-directory: ./backend
+      - name: Check Quality Gate
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectKey: SesacMegazoneLMS_sesac-lms
+          organization: sesacmegazonelms
 
 
   deploy:

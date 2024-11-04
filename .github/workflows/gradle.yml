@@ -81,9 +81,6 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          projectKey: SesacMegazoneLMS_sesac-lms
-          organization: sesacmegazonelms
 
 
   deploy:

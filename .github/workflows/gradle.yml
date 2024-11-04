@@ -105,6 +105,9 @@ jobs:
     needs: [build, dependency-submission]
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+    
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
